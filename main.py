@@ -17,22 +17,14 @@ def print_regular_apartments():
   for ad in ads:
     text, address, url, last_floor = getAdContent(ad)
 
-    if (last_floor == False):
-      print_ad_content([text, address, url])
-      writeAdContentToFile(f, [text, address, url])
-    else:
+    if (last_floor == True):
       last_floor_apartments.append(ad)
 
 def print_last_floor_apartments():
-  f.write('ПОСЛЕДНИЙ ЭТАЖ\n\n')
-  print('ПОСЛЕДНИЙ ЭТАЖ:\n')
-
   for ad in last_floor_apartments:
     text, address, url, last_floor = getAdContent(ad)
     print_ad_content([text, address, url])
     writeAdContentToFile(f, [text, address, url])
-
-print(f'\nFetching from: {BASE_URL}\n')
 
 with open(RESULT_FNAME, encoding='utf-8', mode="w") as f:
   f.write(f'Fetching from: {BASE_URL}\n\n')
